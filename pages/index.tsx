@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <title>Stack Paper</title>
         <meta
           name="description"
-          content="Keep track of your spending habits on the go."
+          content="Keep track of your spending habits on the go, and save more"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -18,37 +19,19 @@ export default function Home() {
           <div>
             <div className="mb-4">
               <Image
-                src="/logo-transparent-thin.png"
+                src="/logo-600x400.png"
                 alt="Stack Paper"
                 width={600}
                 height={400}
                 priority
               />
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="mx-8">
-                <a href="https://twitter.com/stackpaperapp">
-                  <Image
-                    src="/twitter-light.svg"
-                    alt="Twitter"
-                    width={64}
-                    height={64}
-                    priority
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="https://github.com/stackpaperapp">
-                  <Image
-                    src="/github-light.svg"
-                    alt="Github"
-                    width={64}
-                    height={64}
-                    priority
-                  />
-                </a>
+              <div className="flex items-center justify-center">
+                <p>
+                  Keep track of your spending habits on the go, and save more
+                </p>
               </div>
             </div>
+            <Footer />
           </div>
         </div>
       </main>
