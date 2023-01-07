@@ -2,6 +2,7 @@ import Head from "next/head";
 import Hero from "../components/hero";
 import Footer from "../components/footer";
 import Separator from "../components/separator";
+import Container from "../components/container";
 
 export default function Home() {
   return (
@@ -16,13 +17,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col justify-between items-center min-h-screen">
-        <div className="p-8 flex items-center justify-center">
-          <div>
-            <Hero />
-            <Separator />
-            <Footer />
-          </div>
-        </div>
+        <Container>
+          <Hero />
+          <Separator />
+          <Footer />
+        </Container>
       </main>
     </>
   );
