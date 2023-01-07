@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="border-t-8 border-cyan-200">
+    <footer>
       <div className="flex items-center justify-center my-4">
         <div className="mx-2">
           <a href="https://twitter.com/stackpaperapp">

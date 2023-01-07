@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
+import Hero from "../components/hero";
 import Footer from "../components/footer";
+import Separator from "../components/separator";
 
 export default function Home() {
   return (
@@ -17,20 +18,8 @@ export default function Home() {
       <main className="flex flex-col justify-between items-center min-h-screen">
         <div className="p-8 flex items-center justify-center">
           <div>
-            <div className="mb-4">
-              <Image
-                src="/logo-600x400.png"
-                alt="Stack Paper"
-                width={600}
-                height={400}
-                priority
-              />
-              <div className="flex items-center justify-center">
-                <p>
-                  Keep track of your spending habits on the go, and save more
-                </p>
-              </div>
-            </div>
+            <Hero />
+            <Separator />
             <Footer />
           </div>
         </div>
