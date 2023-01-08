@@ -2,6 +2,7 @@ import Footer from "../../components/footer";
 import Separator from "../../components/separator";
 import Container from "../../components/container";
 import Start from "../../components/start";
+import Header from "../../components/header";
 import { fetcher, swrOptions } from "../../utils/network";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -13,7 +14,6 @@ const LoggedInHome = () => {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
   let registered: boolean = false;
-  let name: string;
   let u: User = {
     id: "",
     name: "",
@@ -51,7 +51,8 @@ const LoggedInHome = () => {
   return (
     <main className="flex flex-col justify-between items-center min-h-screen">
       <Container>
-        <div className="flex flex-col h-screen justify-between">
+        <Header newAccount={!registered} />
+        <div className="flex flex-col h-screen justify-between py-4">
           <div>
             {user ? (
               <div className="flex items-center justify-center">

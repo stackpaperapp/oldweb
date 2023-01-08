@@ -4,9 +4,9 @@ type Props = {
 
 const Container = ({ children }: Props) => {
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-center">
-        <div>{children}</div>
+    <div className="w-full px-8">
+      <div className="w-full flex items-center justify-center">
+        <div className="w-full">{children}</div>
       </div>
     </div>
   );

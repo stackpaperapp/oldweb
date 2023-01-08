@@ -10,7 +10,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log({ req, res });
   const { id } = req.query;
 
   // Call GetUser endpoint

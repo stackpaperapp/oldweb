@@ -7,3 +7,9 @@
     color-scheme: dark;
   }
 }
+
+@layer utilities {
+  .debug {
+    border: 4px solid orange;
+  }
+}

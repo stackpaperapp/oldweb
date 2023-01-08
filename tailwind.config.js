@@ -9,7 +9,16 @@ module.exports = {
       sans: ["Inter Tight", "sans-serif"],
       serif: ["Geo", "serif"],
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        "7xl": "5rem",
+      },
+      // Create a new border style called debug which has orange dashed borders
+      // This is useful for debugging layouts
+      borderStyle: {
+        debug: "dashed",
+      },
+    },
   },
   plugins: [],
 };
