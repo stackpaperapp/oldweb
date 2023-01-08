@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Hero from "../components/hero";
 import Footer from "../components/footer";
 import Separator from "../components/separator";
@@ -8,9 +9,13 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+  if (user) {
+    router.push("/_");
+  }
 
   return (
     <>
