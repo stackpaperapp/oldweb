@@ -30,20 +30,23 @@ export default function Home() {
       </Head>
       <main className="flex flex-col justify-between items-center min-h-screen">
         <Container>
-          <Hero />
-          {user ? (
-            <div className="flex items-center justify-center">
-              <p>
-                Welcome {user.name}! <a href="/api/auth/logout">Logout</a>
-              </p>
+          <div className="flex flex-col h-screen justify-between">
+            <div>
+              <Hero />
+              <div className="flex items-center justify-center">
+                <button
+                  className="font-serif text-gray-900 bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-bold rounded-lg text-3xl px-8 py-6 text-center mr-2 mb-2"
+                  onClick={() => router.push("/api/auth/login")}
+                >
+                  Let's Go!
+                </button>
+              </div>
             </div>
-          ) : (
-            <div className="flex items-center justify-center">
-              <a href="/api/auth/login">Login</a>
+            <div>
+              <Separator />
+              <Footer />
             </div>
-          )}
-          <Separator />
-          <Footer />
+          </div>
         </Container>
       </main>
     </>
