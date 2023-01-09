@@ -14,14 +14,23 @@ const Start = ({ user }: Props) => {
             htmlFor="username"
             className="block mb-2 text-sm font-medium cursor-pointer"
           >
-            Create a username
+            Create a username (optional)
           </label>
           <input
             type="text"
             id="username"
-            className="bg-gray-200 text-md rounded-lg w-full p-4 outline-black"
+            className="bg-gray-200 text-md rounded-lg w-full p-4 outline-black text-gray-800"
             required
           />
+        </div>
+        <div className="my-6">
+          <label
+            htmlFor="terms"
+            className="block mb-2 text-sm font-medium cursor-pointer"
+          >
+            <input type="checkbox" id="terms" className="mr-2" required />I
+            agree to the <a href="/terms">Terms of Service</a>
+          </label>
         </div>
         <button
           type="submit"
