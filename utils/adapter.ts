@@ -3,7 +3,7 @@ import type { User, Auth0User } from "../types/user";
 
 const adaptUser = (user: Auth0User): User => {
   let u: User = {
-    id: "",
+    auth0: "",
     name: "",
     email: "",
     phone: "",
@@ -14,7 +14,7 @@ const adaptUser = (user: Auth0User): User => {
     return u;
   }
   u = {
-    id: user.sid as string,
+    auth0: user.sub as string,
     name: user.given_name ? (user.given_name as string) : (user.name as string),
     email: user.email as string,
     phone: "",

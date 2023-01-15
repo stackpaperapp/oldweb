@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 
 type Props = {
-  newAccount: boolean;
+  newAccount?: boolean;
 };
 
 const Header = ({ newAccount }: Props) => {

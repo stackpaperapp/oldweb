@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Hero from "../components/hero";
 import Footer from "../components/footer";
+import Loading from "../components/loading";
 import Separator from "../components/separator";
 import Container from "../components/container";
 
@@ -11,7 +12,7 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
   if (user) {
     router.push("/_");

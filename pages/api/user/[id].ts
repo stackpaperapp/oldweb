@@ -4,7 +4,7 @@ import { getAccessToken } from "@auth0/nextjs-auth0";
 
 type Data = {
   user: User | null;
-  auth0ID: string | string[] | undefined;
+  auth0: string | string[] | undefined;
 };
 
 export default async function handler(
@@ -14,7 +14,6 @@ export default async function handler(
   const { id } = req.query;
   const { accessToken } = await getAccessToken(req, res);
 
-  // Call GetUser endpoint
   const response = await fetch(`${process.env.PENNY_PINCHER_API_URL}/u/${id}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -23,8 +22,6 @@ export default async function handler(
 
   const user = await response.json();
   const payload =
-    response.status === 200
-      ? { user, auth0ID: id }
-      : { user: null, auth0ID: id };
+    response.status === 200 ? { user, auth0: id } : { user: null, auth0: id };
   res.status(response.status).json(payload);
 }
