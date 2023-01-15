@@ -9,49 +9,41 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { User } from "../../types/user";
+import { adaptUser } from "../../utils/adapter";
 
 const LoggedInHome = () => {
-  const { user, error, isLoading } = useUser();
-
-  const router = useRouter();
   let registered: boolean = false;
-  let u: User = {
-    id: "",
-    name: "",
-    email: "",
-  };
+  const { user, error, isLoading } = useUser();
+  const router = useRouter();
+  const u = adaptUser(user);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   if (!user) {
     router.push("/");
   } else {
-    u.id = user.sid as string;
-    u.name = user.given_name
-      ? (user.given_name as string)
-      : (user.name as string);
-
     // Do an SWR fetch to get the user's data
     const { data, error } = useSWR(
-      `/api/user/${user.sid}`,
+      `/api/user/${user.sub}`,
       fetcher,
       swrOptions
     );
     if (error) {
       console.log({ error });
     }
-    if (data) {
-      console.log("User status: ", data.id ? "registered" : "unregistered");
-      console.log({ data });
-
-      if (data.id) {
-        registered = true;
-      }
+    if (data && data.id) {
+      registered = true;
     }
   }
-  const handleSubmit = (phone: string) => {
-    console.log("Submitted!");
-    console.log(phone);
+  const handleSubmit = async (phone: string) => {
+    u.phone = phone;
+    await fetch("/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(u),
+    });
   };
 
   return (

@@ -11,20 +11,21 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { id } = req.query;
   const { accessToken } = await getAccessToken(req, res);
 
   // Call GetUser endpoint
-  const response = await fetch(`${process.env.PENNY_PINCHER_API_URL}/u/${id}`, {
+  const response = await fetch(`${process.env.PENNY_PINCHER_API_URL}/u`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
+    method: "POST",
+    body: JSON.stringify(req.body),
   });
 
   const user = await response.json();
   const payload =
     response.status === 200
-      ? { user, auth0ID: id }
-      : { user: null, auth0ID: id };
+      ? { user, auth0ID: req.body.id }
+      : { user: null, auth0ID: req.body.id };
   res.status(response.status).json(payload);
 }
