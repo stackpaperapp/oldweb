@@ -49,6 +49,10 @@ const LoggedInHome = () => {
       }
     }
   }
+  const handleSubmit = (phone: string) => {
+    console.log("Submitted!");
+    console.log(phone);
+  };
 
   return (
     <main className="flex flex-col justify-between items-center min-h-screen">
@@ -61,7 +65,7 @@ const LoggedInHome = () => {
                 <p>Create a Budget!</p>
               </div>
             ) : (
-              <Start user={u} />
+              <Start user={u} handleSubmit={handleSubmit} />
             )}
           </div>
           <div>
