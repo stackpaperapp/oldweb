@@ -13,9 +13,19 @@ export default async function handler(
 ) {
   const { id } = req.query;
   const { accessToken } = await getAccessToken(req, res);
-  console.log({ accessToken, id });
 
   // Call GetUser endpoint
+  const response = await fetch(`${process.env.PENNY_PINCHER_API_URL}/u/${id}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
 
-  res.status(200).json({ user: null, auth0ID: id });
+  const user = await response.json();
+  const payload =
+    response.status === 200
+      ? { user, auth0ID: id }
+      : { user: null, auth0ID: id };
+
+  res.status(response.status).json(payload);
 }

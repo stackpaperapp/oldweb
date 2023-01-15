@@ -55,21 +55,13 @@ const LoggedInHome = () => {
       <Container>
         <Header newAccount={!registered} />
         <div className="flex flex-col h-screen justify-between py-4">
-          <div>
-            {user ? (
-              <div className="flex items-center justify-center">
-                {registered ? (
-                  <div>
-                    <p>Create a Budget!</p>
-                  </div>
-                ) : (
-                  <Start user={u} />
-                )}
+          <div className="flex items-center justify-center">
+            {registered ? (
+              <div>
+                <p>Create a Budget!</p>
               </div>
             ) : (
-              <div className="flex items-center justify-center">
-                <a href="/api/auth/login">Login</a>
-              </div>
+              <Start user={u} />
             )}
           </div>
           <div>
