@@ -1,16 +1,14 @@
+import { useTheme } from "next-themes";
 import Image from "next/image";
-import useDarkMode from "use-dark-mode";
-
-import { getDarkModeDescriptor } from "../../utils/accessibility";
 
 const Hero = () => {
-  const darkMode = useDarkMode(false);
+  const { resolvedTheme } = useTheme();
 
   return (
     <div className="mb-8">
       <div className="mb-2">
         <Image
-          src={`/logo-600x400-${getDarkModeDescriptor(darkMode.value)}.png`}
+          src={`/logo-600x400-${resolvedTheme}.png`}
           alt="Stack Paper"
           width={600}
           height={400}

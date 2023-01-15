@@ -12,6 +12,7 @@ import { User } from "../../types/user";
 
 const LoggedInHome = () => {
   const { user, error, isLoading } = useUser();
+
   const router = useRouter();
   let registered: boolean = false;
   let u: User = {
@@ -41,6 +42,7 @@ const LoggedInHome = () => {
     }
     if (data) {
       console.log("User status: ", data.id ? "registered" : "unregistered");
+      console.log({ data });
 
       if (data.id) {
         registered = true;

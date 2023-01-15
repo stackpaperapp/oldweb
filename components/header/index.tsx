@@ -1,14 +1,12 @@
 import Image from "next/image";
-
-import useDarkMode from "use-dark-mode";
-import { getDarkModeDescriptor } from "../../utils/accessibility";
+import { useTheme } from "next-themes";
 
 type Props = {
   newAccount: boolean;
 };
 
 const Header = ({ newAccount }: Props) => {
-  const darkMode = useDarkMode(false);
+  const { resolvedTheme } = useTheme();
 
   return (
     <div className="flex justify-between items-center py-4">
@@ -19,7 +17,7 @@ const Header = ({ newAccount }: Props) => {
       </div>
       <div>
         <Image
-          src={`/logo-256-${getDarkModeDescriptor(darkMode.value)}.png`}
+          src={`/logo-256-${resolvedTheme}.png`}
           width={64}
           height={64}
           alt="Stack Paper"
