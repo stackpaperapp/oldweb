@@ -2,7 +2,6 @@ import Footer from "../../components/footer";
 import Separator from "../../components/separator";
 import Container from "../../components/container";
 import Header from "../../components/header";
-import { fetcher, swrOptions } from "../../utils/network";
 import useSWR from "swr";
 
 const Budgets = () => {
@@ -13,7 +12,7 @@ const Budgets = () => {
         <div className="flex flex-col h-screen justify-between py-4">
           <div className="flex items-center justify-center">
             <div>
-              <p>Create a Budget!</p>
+              <p>Settings</p>
             </div>
           </div>
           <div>
