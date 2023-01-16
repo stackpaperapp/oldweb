@@ -6,7 +6,7 @@ const Hero = () => {
   console.log({ resolvedTheme });
 
   return (
-    <div className="mb-8">
+    <div className="flex items-center justify-center flex-col mb-8">
       <div className="mb-2">
         <Image
           src={`/logo-600x400-${resolvedTheme}.png`}

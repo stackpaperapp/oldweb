@@ -1,5 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTheme } from "next-themes";
+
 import Hero from "../components/hero";
 import Footer from "../components/footer";
 import Loading from "../components/loading";
@@ -9,6 +12,7 @@ import Container from "../components/container";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Home() {
+  const { resolvedTheme } = useTheme();
   const { user, error, isLoading } = useUser();
   const router = useRouter();
 
@@ -41,6 +45,15 @@ export default function Home() {
                 >
                   Let's Go!
                 </button>
+              </div>
+              <div className="my-12 flex items-center justify-center">
+                <Image
+                  src={`/currency-icons-${resolvedTheme}.png`}
+                  alt="Currency Icons"
+                  width={550}
+                  height={100}
+                  priority
+                />
               </div>
             </div>
             <div>
