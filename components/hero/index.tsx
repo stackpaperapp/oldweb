@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   const { resolvedTheme } = useTheme();
+  console.log({ resolvedTheme });
 
   return (
     <div className="mb-8">
