@@ -6,6 +6,8 @@ import { fetcher, swrOptions } from "../../utils/network";
 import useSWR from "swr";
 
 const Budgets = () => {
+  // Get the user from Auth0
+
   return (
     <main className="flex flex-col justify-between items-center min-h-screen">
       <Container>
@@ -25,5 +27,19 @@ const Budgets = () => {
     </main>
   );
 };
+
+// export async function getServerSideProps(context) {
+//   console.log({ q: context.query, p: context.params });
+
+//   const url = `/u/${context.query.address}/b`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
 
 export default Budgets;

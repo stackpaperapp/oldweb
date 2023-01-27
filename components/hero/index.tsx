@@ -17,7 +17,7 @@ const Hero = () => {
         />
       </div>
       <div className="flex items-center justify-center">
-        <p className="w-3/4 text-center">
+        <p className="w-3/4 italic text-center">
           Keep track of your spending habits on the go, and save more
         </p>
       </div>

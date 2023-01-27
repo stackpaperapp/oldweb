@@ -4,7 +4,7 @@ import { getAccessToken } from "@auth0/nextjs-auth0";
 
 type Data = {
   user: User | null;
-  userID: string | string[] | undefined;
+  userid: string | string[] | undefined;
 };
 
 export default async function handler(
@@ -25,6 +25,6 @@ export default async function handler(
 
   const user = await response.json();
   const payload =
-    response.status === 200 ? { user, userID: id } : { user: null, userID: id };
+    response.status === 200 ? { user, userid: id } : { user: null, userid: id };
   res.status(response.status).json(payload);
 }
