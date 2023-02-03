@@ -26,15 +26,26 @@ const LoggedInHome = () => {
     }
   }
 
-  // Do an SWR fetch to get the user's data
   const { data, isLoading, error } = useSWR(
-    `/api/user/${user.user.userid}`,
-    fetcher,
+    `/api/user`,
+    (url) =>
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: user.user.email,
+        }),
+      }).then((r) => r.json()),
     swrOptions
   );
+
   if (error) {
     console.log({ error });
   }
+
+  console.log({ data });
 
   if (data && data.user && data.auth0 === data.user.auth0) {
     console.log("User is registered");
@@ -44,7 +55,7 @@ const LoggedInHome = () => {
 
   const handleSubmit = async (phone: string) => {
     user.user.phone = phone;
-    await fetch("/api/user", {
+    await fetch("/api/user/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

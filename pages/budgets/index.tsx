@@ -2,11 +2,26 @@ import Footer from "../../components/footer";
 import Separator from "../../components/separator";
 import Container from "../../components/container";
 import Header from "../../components/header";
+import useGetUser from "../../hooks/use-get-user";
+
 import { fetcher, swrOptions } from "../../utils/network";
 import useSWR from "swr";
 
 const Budgets = () => {
   // Get the user from Auth0
+  const user = useGetUser();
+
+  // Do an SWR fetch to get the user's data
+  const { data, isLoading, error } = useSWR(
+    `/api/user/${user.user.userid}/budgets`,
+    fetcher,
+    swrOptions
+  );
+  if (error) {
+    console.log({ error });
+  }
+
+  console.log({ isLoading, data });
 
   return (
     <main className="flex flex-col justify-between items-center min-h-screen">
